@@ -17,16 +17,15 @@ public class BinaryTree {
         TreeNode node = new TreeNode((int) (Math.random() * 100), null, null);
         treeRoot = node;
 
-        initChildren(childrenNums, node,null);
+        initChildren(childrenNums, node, null);
 
     }
 
-    public void initTree(List<Integer> data)
-    {
-        if (data != null && data.size()>0) {
+    public void initTree(List<Integer> data) {
+        if (data != null && data.size() > 0) {
             TreeNode node = new TreeNode(data.get(0), null, null);
-            treeRoot =node;
-            initChildren(data.size()-1,treeRoot, data);
+            treeRoot = node;
+            initChildren(0, treeRoot, data);
 
         }
     }
@@ -43,31 +42,34 @@ public class BinaryTree {
     /**
      * 初始化孩子节点 递归式
      *
-     * @param childrenStock
+     * @param index ：数组元素下标
      * @param node
      */
-    public int initChildren(int childrenStock, TreeNode node,List<Integer> data) {
+    public void initChildren(int index, TreeNode node, List<Integer> data) {
 
         //创建左子结点本身
-        if (childrenStock-- > 0) {
-            TreeNode left = new TreeNode(data==null?null:data.get(data.size()-childrenStock-1), null, null);
+        int leftIndex = (index + 1) * 2 - 1;
+        if (leftIndex + 1 <= data.size() && data.get(leftIndex) != null) {
+            TreeNode left = new TreeNode(data.get(leftIndex), null, null);
             node.setLeft(left);
-
         }
-        if (childrenStock-- > 0) {   //创建右子结点本身
-            TreeNode right = new TreeNode(data==null?null:data.get(data.size()-childrenStock-1), null, null);
+
+        int rightIndex = (index + 1) * 2;
+        //创建右子结点本身
+        if (rightIndex + 1 <= data.size() && data.get(rightIndex) != null) {
+
+            TreeNode right = new TreeNode(data.get(rightIndex), null, null);
             node.setRight(right);
         }
         //填充左子结点
-        if (childrenStock > 0) {
-            childrenStock=initChildren(childrenStock, node.getLeft(),data);
+        if ( node.getLeft() != null) {
+              initChildren(leftIndex, node.getLeft(), data);
         }
         //填充右子节点
-        if (childrenStock > 0) {
-           childrenStock= initChildren(childrenStock, node.getRight(),data);
+        if ( node.getRight() != null) {
+             initChildren(rightIndex, node.getRight(), data);
         }
 
-        return childrenStock;
 
     }
 
