@@ -1,7 +1,9 @@
 package com.weile.algorithmdemo.datastructure;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @Auth weile
@@ -62,12 +64,12 @@ public class BinaryTree {
             node.setRight(right);
         }
         //填充左子结点
-        if ( node.getLeft() != null) {
-              initChildren(leftIndex, node.getLeft(), data);
+        if (node.getLeft() != null) {
+            initChildren(leftIndex, node.getLeft(), data);
         }
         //填充右子节点
-        if ( node.getRight() != null) {
-             initChildren(rightIndex, node.getRight(), data);
+        if (node.getRight() != null) {
+            initChildren(rightIndex, node.getRight(), data);
         }
 
 
@@ -114,6 +116,8 @@ public class BinaryTree {
             this.right = right;
         }
     }
+
+
 
 
     public static void main(String[] args) {
