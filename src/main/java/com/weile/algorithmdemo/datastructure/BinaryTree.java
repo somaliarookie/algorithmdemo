@@ -1,9 +1,6 @@
 package com.weile.algorithmdemo.datastructure;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Auth weile
@@ -141,5 +138,12 @@ public class BinaryTree {
         integers.add(-1);
         tree2.initTree(integers);
 
+        int[] test=new int[5] ;
+
+
+
+
     }
+
+
 }
